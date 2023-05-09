@@ -19,13 +19,13 @@ let clock = {
             clock.advance();
         }
     },
+    stop: () => {
+        clock.running = false;
+    },
     up_hook: () => {
-        console.log(1);
+        console.log(1); // this is by default but should be replaced
     },
     down_hook: () => {
-        console.log(0);
+        console.log(0); // this is by default but should be replaced
     },
 };
-
-
-clock.run();
