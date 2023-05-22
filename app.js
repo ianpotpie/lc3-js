@@ -61,6 +61,8 @@ lc3_img.onload = () => {
     draw_lc3.nzp(ctx, 322, 654, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.fsm(ctx, 462, 590, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
 
+    // we draw the components related to memory
+    draw_lc3.mar(ctx, 364, 846, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
 
     // this is the bus and wires coming out of the bus
     draw_lc3.bus(ctx, 0, 0, wire_strokeStyle);
