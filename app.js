@@ -55,6 +55,8 @@ lc3_img.onload = () => {
     // here we draw the components related to the logic/nzp/FSM
     draw_lc3.logic(ctx, 322, 708, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.nzp(ctx, 322, 654, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
+    draw_lc3.fsm(ctx, 462, 590, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
+
 
     // this is the bus and wires coming out of the bus
     draw_lc3.bus(ctx, 0, 0, wire_strokeStyle);
