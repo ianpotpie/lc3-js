@@ -10,6 +10,16 @@ export function bus(ctx, x, y, strokeStyle = "black", lineWidth = 10.0, fillStyl
     draw_dbl_arrow(ctx, path, strokeStyle, lineWidth, fillStyle, 0.15);
 }
 
+export function pc(ctx, x, y, strokeStyle = "black", lineWidth = 1.0, fillStyle = null, sz = 12.0, angle = 0.0) {
+    let ref_points = [[-3, 1], [-3, -1], [3, -1], [3, 1]];
+    let points = transform_points(ref_points, x, y, sz, angle);
+    draw_polygon(ctx, points, strokeStyle, lineWidth, fillStyle);
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = String(1.5 * sz) + "px" + " arial";
+    ctx.fillText("PC", x, y);
+}
+
 export function incrementor(ctx, x, y, strokeStyle = "black", lineWidth = 10.0, fillStyle = null, sz = 15.0, angle = 0.0) {
     let ref_points = [[1, -1], [1, 1], [-1, 1], [-1, -1]];
     let points = transform_points(ref_points, x, y, sz, angle);

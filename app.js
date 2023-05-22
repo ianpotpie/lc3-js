@@ -34,6 +34,7 @@ lc3_img.onload = () => {
 
     draw_lc3.marmux(ctx, 177, 122, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.pcmux(ctx, 393, 186, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
+    draw_lc3.pc(ctx, 393, 117, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.incrementor(ctx, 473, 153, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
 
     draw_lc3.alu(ctx, 650, 592, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
