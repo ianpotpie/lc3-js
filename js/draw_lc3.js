@@ -10,6 +10,24 @@ export function bus(ctx, x, y, strokeStyle = "black", lineWidth = 10.0, fillStyl
     draw_dbl_arrow(ctx, path, strokeStyle, lineWidth, fillStyle, 0.15);
 }
 
+export function reg_file(ctx, x, y, strokeStyle = "black", lineWidth = 10.0, fillStyle = null, sz = 18.0, angle = 0.0) {
+    let ref_points = [[-1, -1.5], [1, -1.5], [1, 1.5], [-1, 1.5]];
+    let points = transform_points(ref_points, x, y, 3 * sz, angle);
+    draw_polygon(ctx, points, strokeStyle, lineWidth, fillStyle);
+
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = String(1.5 * sz) + "px" + " arial";
+    ctx.fillText("REG", x, y - (2 * sz));
+    ctx.fillText("FILE", x, y);
+
+    ctx.font = String(1.0 * sz) + "px" + " arial";
+    ctx.fillText("SR2", points[3][0] + 1.5 * sz, points[3][1] - 1.5 * sz);
+    ctx.fillText("OUT", points[3][0] + 1.5 * sz, points[3][1] - 0.5 * sz);
+    ctx.fillText("SR1", points[2][0] - 1.5 * sz, points[2][1] - 1.5 * sz);
+    ctx.fillText("OUT", points[2][0] - 1.5 * sz, points[2][1] - 0.5 * sz);
+}
+
 export function fsm(ctx, x, y, strokeStyle = "black", lineWidth = 10.0, fillStyle = null, sz = 12.0, angle = 0.0) {
     let ref_points = [[-1, -3], [1, -3], [1, 3], [-1, 3]];
     let points = transform_points(ref_points, x, y, 3 * sz, angle);

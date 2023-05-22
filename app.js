@@ -29,6 +29,7 @@ lc3_img.onload = () => {
     path = [[367, 361], [367, 350], [324, 350], [324, 331]];
     draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz);
 
+    draw_lc3.reg_file(ctx, 657, 195, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
 
     draw_lc3.marmux(ctx, 177, 122, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.pcmux(ctx, 393, 186, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
