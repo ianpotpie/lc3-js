@@ -36,6 +36,7 @@ lc3_img.onload = () => {
     draw_lc3.alu(ctx, 650, 592, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
 
     // these are the wires coming out of the Instruction Register
+    draw_lc3.ir(ctx, 186, 662, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.sext(ctx, 125, 466, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.sext(ctx, 125, 515, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.sext(ctx, 125, 564, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
@@ -51,8 +52,9 @@ lc3_img.onload = () => {
     path = [[185, 626], [57, 626], [57, 277]];
     draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz);
 
+    // here we draw the components related to the logic/nzp/FSM
     draw_lc3.logic(ctx, 322, 708, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
-    draw_lc3.ir(ctx, 186, 662, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
+    draw_lc3.nzp(ctx, 322, 654, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
 
     // this is the bus and wires coming out of the bus
     draw_lc3.bus(ctx, 0, 0, wire_strokeStyle);

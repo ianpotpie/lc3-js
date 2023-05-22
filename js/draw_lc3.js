@@ -10,6 +10,27 @@ export function bus(ctx, x, y, strokeStyle = "black", lineWidth = 10.0, fillStyl
     draw_dbl_arrow(ctx, path, strokeStyle, lineWidth, fillStyle, 0.15);
 }
 
+export function nzp(ctx, x, y, strokeStyle = "black", lineWidth = 10.0, fillStyle = null, sz = 10.0, angle = 0.0) {
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = String(1.5 * sz) + "px" + " arial";
+
+    let ref_points = [[-1, -1], [-1, 1], [-3, 1], [-3, -1]];
+    let points = transform_points(ref_points, x, y, sz, angle);
+    draw_polygon(ctx, points, strokeStyle, lineWidth, fillStyle);
+    ctx.fillText("N", (points[1][0] + points[2][0]) / 2, (points[0][1] + points[1][1]) / 2);
+
+    ref_points = [[1, -1], [1, 1], [-1, 1], [-1, -1]];
+    points = transform_points(ref_points, x, y, sz, angle);
+    draw_polygon(ctx, points, strokeStyle, lineWidth, fillStyle);
+    ctx.fillText("Z", (points[1][0] + points[2][0]) / 2, (points[0][1] + points[1][1]) / 2);
+
+    ref_points = [[3, -1], [3, 1], [1, 1], [1, -1]];
+    points = transform_points(ref_points, x, y, sz, angle);
+    draw_polygon(ctx, points, strokeStyle, lineWidth, fillStyle);
+    ctx.fillText("P", (points[1][0] + points[2][0]) / 2, (points[0][1] + points[1][1]) / 2);
+}
+
 export function ir(ctx, x, y, strokeStyle = "black", lineWidth = 1.0, fillStyle = null, sz = 12.0, angle = 0.0) {
     let ref_points = [[-3.5, 1], [-3.5, -1], [3.5, -1], [3.5, 1]];
     let points = transform_points(ref_points, x, y, sz, angle);
@@ -109,3 +130,4 @@ export function alu(ctx, x, y, strokeStyle = null, lineWidth = 1.0, fillStyle = 
     ctx.font = String(1.0 * sz) + "px" + " arial";
     ctx.fillText("ALU", x, y);
 }
+
