@@ -10,6 +10,16 @@ export function bus(ctx, x, y, strokeStyle = "black", lineWidth = 10.0, fillStyl
     draw_dbl_arrow(ctx, path, strokeStyle, lineWidth, fillStyle, 0.15);
 }
 
+export function memory(ctx, x, y, strokeStyle = "black", lineWidth = 1.0, fillStyle = null, sz = 11.0, angle = 0.0) {
+    let ref_points = [[-6.5, 4.5], [-6.5, -4.5], [6.5, -4.5], [6.5, 4.5]];
+    let points = transform_points(ref_points, x, y, sz, angle);
+    draw_polygon(ctx, points, strokeStyle, lineWidth, fillStyle);
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.font = String(1.5 * sz) + "px" + " arial";
+    ctx.fillText("MEMORY", x, y);
+}
+
 export function mdr(ctx, x, y, strokeStyle = "black", lineWidth = 1.0, fillStyle = null, sz = 11.0, angle = 0.0) {
     let ref_points = [[-2.5, 1], [-2.5, -1], [2.5, -1], [2.5, 1]];
     let points = transform_points(ref_points, x, y, sz, angle);
