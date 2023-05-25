@@ -5,12 +5,12 @@ import * as draw_lc3 from "./js/draw_lc3.js";
 
 var unit_strokeStyle = "black";
 var unit_lineWidth = 1.0;
-var unit_fillStyle = "red";
+var unit_fillStyle = "grey";
 
-var wire_strokeStyle = "orange";
+var wire_strokeStyle = "black";
 var wire_lineWidth = 2.0;
 var wire_fillStyle = "black";
-var wire_head_sz = 0.5;
+var wire_head_sz = 0.3;
 
 let lc3_img = new Image();
 lc3_img.onload = () => {
@@ -18,7 +18,7 @@ lc3_img.onload = () => {
     canvas.setAttribute("height", 1024);
     canvas.setAttribute("width", 815);
     var ctx = canvas.getContext("2d");
-    ctx.drawImage(lc3_img, 0, 0);
+    // ctx.drawImage(lc3_img, 0, 0);
 
     // these are the large components related to addition
     draw_lc3.adder(ctx, 297, 304, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
@@ -46,20 +46,31 @@ lc3_img.onload = () => {
     draw_lc3.sext(ctx, 125, 564, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.sext(ctx, 328, 466, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.zext(ctx, 57, 262, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
-    draw_circle(ctx, 185, 626, 4, wire_strokeStyle, wire_lineWidth, wire_fillStyle);
+    path = [[185, 762], [185, 676]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // Bus -> IR
     path = [[185, 650], [185, 626]];
-    draw_path(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz);
+    draw_path(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // IR -> IR hub
+    draw_circle(ctx, 185, 626, 4, wire_strokeStyle, wire_lineWidth, wire_fillStyle); // IR hub
     path = [[185, 626], [185, 594], [258, 594], [258, 467], [296, 467]];
-    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz);
-    path = [[185, 626], [289, 626], [289, 536], [423, 536]];
-    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz);
-    path = [[185, 626], [57, 626], [57, 277]];
-    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz);
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // IR hub -> [4:0] SEXT
+    path = [[358, 467], [593, 467], [593, 489]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // [4:0] SEXT -> SR2MUX
+    path = [[185, 626], [289, 626], [289, 536], [424, 536]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // IR hub -> FSM
+    path = [[185, 626], [57, 626], [57, 279]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // IR hub -> [7:0] ZEXT
 
     // here we draw the components related to the logic/nzp/FSM
     draw_lc3.logic(ctx, 322, 708, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.nzp(ctx, 322, 654, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.fsm(ctx, 462, 590, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
+
+    path = [[322, 762], [322, 725]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // Bus -> LOGIC
+    path = [[322, 692], [322, 666]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // LOGIC -> NZP
+    path = [[322, 644], [322, 603], [424, 603]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // NZP -> FSM
 
     // we draw the components related to memory
     draw_lc3.mar(ctx, 364, 846, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
