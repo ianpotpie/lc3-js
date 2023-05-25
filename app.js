@@ -44,21 +44,47 @@ lc3_img.onload = () => {
     draw_lc3.sext(ctx, 125, 466, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.sext(ctx, 125, 515, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     draw_lc3.sext(ctx, 125, 564, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
-    draw_lc3.sext(ctx, 328, 466, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
-    draw_lc3.zext(ctx, 57, 262, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     path = [[185, 762], [185, 676]];
     draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // Bus -> IR
     path = [[185, 650], [185, 626]];
     draw_path(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // IR -> IR hub
     draw_circle(ctx, 185, 626, 4, wire_strokeStyle, wire_lineWidth, wire_fillStyle); // IR hub
+
     path = [[185, 626], [185, 594], [258, 594], [258, 467], [296, 467]];
     draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // IR hub -> [4:0] SEXT
+    draw_lc3.sext(ctx, 328, 466, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
     path = [[358, 467], [593, 467], [593, 489]];
     draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // [4:0] SEXT -> SR2MUX
+
     path = [[185, 626], [289, 626], [289, 536], [424, 536]];
     draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // IR hub -> FSM
+
     path = [[185, 626], [57, 626], [57, 279]];
     draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // IR hub -> [7:0] ZEXT
+    draw_lc3.zext(ctx, 57, 262, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
+    path = [[57, 246], [57, 194], [153, 194], [153, 139]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // [7:0] ZEXT -> MARMUX
+
+    draw_circle(ctx, 57, 466, 4, wire_strokeStyle, wire_lineWidth, wire_fillStyle); // [5:0] SEXT hub
+    path = [[57, 466], [93, 466]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // [5:0] SEXT hub ->  [5:0] SEXT
+    path = [[155, 466], [161, 466], [161, 390]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // [5:0] SEXT -> ADDR2 MUX
+
+    draw_circle(ctx, 57, 515, 4, wire_strokeStyle, wire_lineWidth, wire_fillStyle); // [8:0] SEXT hub
+    path = [[57, 515], [93, 515]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // [8:0] SEXT hub ->  [8:0] SEXT
+    path = [[155, 515], [193, 515], [193, 390]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // [8:0] SEXT -> ADDR2 MUX
+
+    draw_circle(ctx, 57, 564, 4, wire_strokeStyle, wire_lineWidth, wire_fillStyle); // [10:0] SEXT hub
+    path = [[57, 564], [93, 564]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // [10:0] SEXT hub ->  [10:0] SEXT
+    path = [[155, 564], [226, 564], [226, 390]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // [10:0] SEXT -> ADDR2 MUX
+
+    path = [[258, 430], [258, 390]];
+    draw_arrow(ctx, path, wire_strokeStyle, wire_lineWidth, wire_fillStyle, wire_head_sz); // 0 -> ADDR2 MUX
 
     // here we draw the components related to the logic/nzp/FSM
     draw_lc3.logic(ctx, 322, 708, unit_strokeStyle, unit_lineWidth, unit_fillStyle);
