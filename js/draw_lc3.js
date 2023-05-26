@@ -4,12 +4,6 @@ export function gate(ctx, x, y, sz, angle) {
     let ref_points = [[], [], []];
 }
 
-export function bus(ctx, x, y, strokeStyle = "black", lineWidth = 10.0, fillStyle = null, sz = 1.0, angle = 0.0) {
-    let path = [[32, 25], [793, 25], [793, 762], [32, 762]];
-    path = transform_points(path, x, y, sz, angle);
-    draw_dbl_arrow(ctx, path, strokeStyle, lineWidth, fillStyle, 0.15);
-}
-
 export function memory(ctx, x, y, strokeStyle = "black", lineWidth = 1.0, fillStyle = null, sz = 11.0, angle = 0.0) {
     let ref_points = [[-6.5, 4.5], [-6.5, -4.5], [6.5, -4.5], [6.5, 4.5]];
     let points = transform_points(ref_points, x, y, sz, angle);
