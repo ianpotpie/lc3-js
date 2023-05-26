@@ -17,8 +17,6 @@ const BUS_LINEWIDTH = 10.0;
 const BUS_FILLSTYLE = "black";
 const BUS_HEADSZ = 0.15;
 
-let x = 689;
-
 let lc3_img = new Image();
 lc3_img.onload = () => {
     var canvas = document.getElementById("LC3");
@@ -27,8 +25,35 @@ lc3_img.onload = () => {
     var ctx = canvas.getContext("2d");
     ctx.drawImage(lc3_img, 0, 0);
 
+    // Render the Bus
+
     let path = [[32, 25], [793, 25], [793, 762], [32, 762]];
     draw_dbl_arrow(ctx, path, BUS_STROKESTYLE, BUS_LINEWIDTH, BUS_FILLSTYLE, BUS_HEADSZ); // Bus
+
+    // Render Memory
+
+    path = [[366, 762], [366, 833]];
+    draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Bus -> MAR
+
+    draw_lc3.mar(ctx, 364, 846, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
+
+    path = [[366, 856], [366, 930], [327, 930]];
+    draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // MAR -> Memory
+
+    draw_lc3.memory(ctx, 253, 930, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
+
+    path = [[152, 762], [152, 833]];
+    draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Bus -> MDR
+
+    draw_lc3.mdr(ctx, 142, 846, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
+
+    path = [[152, 856], [152, 910], [180, 910]];
+    draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // MDR -> Memory
+
+    path = [[181, 950], [132, 950], [132, 859]];
+    draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // MDR -> Memory
+
+    // Render Register File
 
     path = [[657, 25], [657, 112]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Bus -> Reg File
@@ -141,9 +166,6 @@ lc3_img.onload = () => {
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // NZP -> FSM
     draw_lc3.fsm(ctx, 462, 590, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
 
-    // we draw the components related to memory
-    draw_lc3.mar(ctx, 364, 846, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
-    draw_lc3.memory(ctx, 253, 930, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
-    draw_lc3.mdr(ctx, 142, 846, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
+
 };
 lc3_img.src = "img/lc3_datapath.png";
