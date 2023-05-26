@@ -23,7 +23,7 @@ lc3_img.onload = () => {
     canvas.setAttribute("height", 1024);
     canvas.setAttribute("width", 815);
     var ctx = canvas.getContext("2d");
-    ctx.drawImage(lc3_img, 0, 0);
+    // ctx.drawImage(lc3_img, 0, 0);
 
     // Render the Bus
 
@@ -42,18 +42,18 @@ lc3_img.onload = () => {
 
     draw_lc3.memory(ctx, 253, 930, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
 
-    path = [[152, 762], [152, 833]];
+    path = [[157, 762], [157, 833]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Bus -> MDR
 
     draw_lc3.mdr(ctx, 142, 846, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
 
-    path = [[152, 856], [152, 910], [180, 910]];
+    path = [[157, 856], [157, 910], [180, 910]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // MDR -> Memory
 
-    path = [[181, 950], [132, 950], [132, 859]];
+    path = [[181, 950], [127, 950], [127, 859]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // MDR -> Memory
 
-    // Render Register File
+    // Render Register File + SR2MUX + ALU
 
     path = [[657, 25], [657, 112]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Bus -> Reg File
@@ -63,6 +63,8 @@ lc3_img.onload = () => {
     path = [[625, 275], [625, 489]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Reg File -> SR2MUX
 
+    draw_lc3.sr2mux(ctx, 610, 506, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
+
     path = [[610, 521], [610, 560]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // SR2MUX -> ALU
 
@@ -71,10 +73,13 @@ lc3_img.onload = () => {
 
     draw_lc3.alu(ctx, 650, 592, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
 
+    // Render ADDR2MUX + ADDR1MUX + Adder
+
     draw_circle(ctx, 689, 442, 4, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE); // Reg Hub
     path = [[689, 442], [330, 442], [330, 390]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Reg Hub -> ADDR1MUX
 
+    draw_circle(ctx, 393, 81, 4, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE); // PC Hub
     path = [[393, 81], [513, 81], [513, 416], [404, 416], [404, 390]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // PC Hub -> ADDR1MUX
 
@@ -99,16 +104,26 @@ lc3_img.onload = () => {
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Adder hub -> MARMUX
 
 
-    draw_lc3.sr2mux(ctx, 610, 506, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
-
     draw_lc3.marmux(ctx, 177, 122, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
 
     path = [[282, 25], [282, 233], [361, 233], [361, 203]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Bus -> PCMUX
 
     draw_lc3.pcmux(ctx, 393, 186, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
+
+    path = [[393, 171], [393, 131]];
+    draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // PCMUX -> PC
+
     draw_lc3.pc(ctx, 393, 117, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
+
+    draw_circle(ctx, 473, 81, 4, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE); // +1 hub
+    path = [[473, 81], [473, 136]];
+    draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // +1 hub -> +1
+
     draw_lc3.incrementor(ctx, 473, 153, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
+
+    path = [[473, 168], [473, 258], [425, 258], [425, 203]];
+    draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // +1 -> PCMUX
 
     draw_lc3.ir(ctx, 186, 662, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
     draw_lc3.sext(ctx, 125, 466, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
