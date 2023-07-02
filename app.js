@@ -47,11 +47,15 @@ lc3_img.onload = () => {
 
     draw_lc3.mdr(ctx, 142, 846, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
 
+    draw_line(ctx, 127, 835, 127, 816, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_LINEWIDTH); // MDR -> GateMDR
+    draw_lc3.gate(ctx, 127, 800, 8); // GateMDR
+    draw_line(ctx, 127, 800, 127, 762, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_LINEWIDTH); // GateMDR -> Bus
+
     path = [[157, 856], [157, 910], [180, 910]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // MDR -> Memory
 
     path = [[181, 950], [127, 950], [127, 859]];
-    draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // MDR -> Memory
+    draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Memory -> MDR
 
     // Render Register File + SR2MUX + ALU
 
