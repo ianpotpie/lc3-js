@@ -77,6 +77,10 @@ lc3_img.onload = () => {
 
     draw_lc3.alu(ctx, 650, 592, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
 
+    draw_line(ctx, 650, 609, 650, 684, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_LINEWIDTH); // ALU -> GateALU
+    draw_lc3.gate(ctx, 650, 700, 8, Math.PI); // GateALU
+    draw_line(ctx, 650, 700, 650, 762, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_LINEWIDTH); // GateALU -> Bus
+
     // Render ADDR2MUX + ADDR1MUX + Adder
 
     draw_circle(ctx, 689, 442, 4, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE); // Reg Hub
