@@ -103,8 +103,11 @@ lc3_img.onload = () => {
     path = [[297, 258], [201, 258], [201, 139]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Adder hub -> MARMUX
 
-
     draw_lc3.marmux(ctx, 177, 122, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
+
+    draw_line(ctx, 177, 107, 177, 61, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_LINEWIDTH); // MARMUX -> GateMARMUX
+    draw_lc3.gate(ctx, 177, 45, 8); // GateMARMUX
+    draw_line(ctx, 177, 45, 177, 25, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_LINEWIDTH); // GateMARMUX -> Bus
 
     path = [[282, 25], [282, 233], [361, 233], [361, 203]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // Bus -> PCMUX
