@@ -119,6 +119,10 @@ lc3_img.onload = () => {
 
     draw_lc3.pc(ctx, 393, 117, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
 
+    draw_line(ctx, 393, 105, 393, 61, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_LINEWIDTH); // PC -> GatePC
+    draw_lc3.gate(ctx, 393, 45, 8); // GatePC
+    draw_line(ctx, 393, 45, 393, 25, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_LINEWIDTH); // GatePC -> Bus
+
     draw_circle(ctx, 473, 81, 4, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE); // +1 hub
     path = [[473, 81], [473, 136]];
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // +1 hub -> +1
