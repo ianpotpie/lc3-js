@@ -1,7 +1,9 @@
 import { draw_path, draw_arrow, draw_dbl_arrow, draw_circle, draw_polygon, transform_points } from "./utils.js";
 
-export function gate(ctx, x, y, sz, angle) {
-    let ref_points = [[], [], []];
+export function gate(ctx, x, y, sz, angle, strokeStyle = "black", lineWidth = 1.0, fillStyle = null) {
+    let ref_points = [[0.0, 0.0], [1.0, 2.0], [-1.0, 2.0]];
+    let points = transform_points(ref_points, x, y, sz, angle);
+    draw_polygon(ctx, points, strokeStyle, lineWidth, fillStyle);
 }
 
 export function memory(ctx, x, y, strokeStyle = "black", lineWidth = 1.0, fillStyle = null, sz = 11.0, angle = 0.0) {

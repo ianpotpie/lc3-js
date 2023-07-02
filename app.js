@@ -181,6 +181,5 @@ lc3_img.onload = () => {
     draw_arrow(ctx, path, WIRE_STROKESTYLE, WIRE_LINEWIDTH, WIRE_FILLSTYLE, WIRE_HEADSZ); // NZP -> FSM
     draw_lc3.fsm(ctx, 462, 590, UNIT_STROKESTYLE, UNIT_LINEWIDTH, UNIT_FILLSTYLE);
 
-
 };
 lc3_img.src = "img/lc3_datapath.png";
