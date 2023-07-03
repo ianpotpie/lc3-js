@@ -10,12 +10,12 @@ class Wire {
         }
     }
 
-    update_state(new_state) {
-        this.state = new_state;
+    set(input) {
+        this.state = input;
         for (i = 0; i < this.state.length; i++) {
             connection = this.connection[i];
             if (connection.state != new_state) {
-                connection.update_state(new_state);
+                connection.set(input);
             }
         }
     }
