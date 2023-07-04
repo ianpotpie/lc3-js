@@ -12,7 +12,7 @@ class Wire {
 
     set(input) {
         this.state = input;
-        for (i = 0; i < this.state.length; i++) {
+        for (i = 0; i < this.connections.length; i++) {
             connection = this.connection[i];
             if (connection.state != new_state) {
                 connection.set(input);
