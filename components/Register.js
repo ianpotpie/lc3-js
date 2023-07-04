@@ -6,8 +6,12 @@ class Register {
         this.connections = [];
     }
 
-    set_load(load) {
-        this.load = load;
+    load() {
+        this.load = true;
+    }
+
+    lock() {
+        this.load = false;
     }
 
     connect(connection) {
