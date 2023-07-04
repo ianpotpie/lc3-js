@@ -29,6 +29,3 @@ class Clock {
     }
 
 }
-
-clk = new Clock();
-clk.run();
